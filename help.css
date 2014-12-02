@@ -1,0 +1,478 @@
+/************************************************************* Reset CSS ******************************************************/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+*, *:before, *:after {
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/************************************************************* End reset CSS ******************************************************/
+
+
+
+
+/************************************************************* CSS style **********************************************************
+
+	Describe all elements in the web page, from the bases to the details :
+
+		- BASE
+		- LAYOUT
+		- MODULE
+		- STATE
+		- THEME
+
+
+	With the pattern :
+
+		element {
+
+			BOX
+			...
+
+			BORDER
+			...
+
+			BACKGROUND
+			...
+
+			TEXT
+			...
+
+			OTHER	
+			...
+		}
+
+*/
+
+/**********************************************************************************************************************************
+																BASE
+/**********************************************************************************************************************************/
+html { /* NEW */
+
+	height: 100%;
+}
+
+body {
+	
+	height: 100%; /* NEW */
+
+	font-family: "PT sans", Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 1.5rem;
+	/* letter-spacing: 1px; */
+	color: #7a7a7a;
+														
+}
+
+header {
+
+	position: relative;
+}
+
+footer {
+
+	position: absolute; /* NEW */
+	bottom: 0; /* NEW */
+	left: 0; /* NEW */
+
+	height: 6rem;
+	width: 100%;
+	line-height: 6rem;
+
+	background-color: #C8C8DA;
+
+	font-size: 12px;
+	text-align: center;
+
+	clear: both;
+}
+
+p
+{
+	margin-bottom: 1.5em;
+}
+
+blockquote {
+
+	margin: 0 60px 0 45px;
+	margin-bottom: 1.5em;
+	padding-left: 15px;
+
+	border-left: 5px solid #3399FF;
+
+	font-family: "Kreon", serif;
+	font-style: italic;
+	
+	overflow: hidden;
+}
+
+blockquote p {
+	
+	margin-bottom: 0;
+}
+
+blockquote em {
+
+	display: block;
+
+	font-family: "PT sans", Arial, Helvetica, sans-serif;
+	font-style: normal;
+	text-align: right;
+}
+
+blockquote em:before {
+	
+	content: '- ';
+}
+
+strong { 
+	
+	color: #333;
+	font-weight: bold; 
+}
+
+a {
+	
+	color: #3399FF;
+}
+
+a:hover {
+	
+	color: #333;
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 { 
+	
+	margin-bottom: 1.5rem;
+
+	font-family: "Kreon", serif; 
+	color: #333;
+	text-transform: uppercase;
+}
+
+h1 { 
+
+	border-bottom: 1px solid #7a7a7a;
+
+	font-size: 1.5em;
+}
+
+h2 { font-size: 1.325em; }
+h3{ font-size: 1.25em; }
+h4{ font-size: 1.5em; } 
+h5, h6{ font-size: 1em; }
+
+ul { 
+	
+	margin-left: 20px; 
+	margin-bottom: 1.5em;
+
+	list-style: square inside;
+	
+	overflow: hidden;
+}
+
+ul ul, ul ol {
+	
+	margin-bottom: 0;
+
+	list-style: disc inside;
+}
+
+ol {
+	
+	margin-left: 20px;
+	margin-bottom: 1.5em;
+
+	list-style: decimal inside;
+	
+	overflow: hidden;
+}
+
+ol ol, ul ol {
+	
+	margin-bottom: 0;
+
+	list-style: lower-roman inside;
+}
+
+img.alignleft
+{
+	float: left;
+	margin-right: 20px;
+}
+
+img.aligncenter
+{
+	display: block;
+	margin: 0 auto;
+}
+
+img.alignright
+{
+	float: right;
+	margin-left: 20px;
+}
+
+/**********************************************************************************************************************************
+																LAYOUT
+/**********************************************************************************************************************************/
+.main {
+
+	position: relative; /* NEW */
+
+	height: auto !important;
+	min-height: 100%;
+
+	clear: both;
+}
+
+.container {
+
+	position: relative;
+
+	padding-bottom: 6rem; /* NEW */
+	margin: 0 auto;
+	width: 60%;
+}
+/**********************************************************************************************************************************
+																MODULE
+/**********************************************************************************************************************************/
+.header-band {
+
+	color: #FFFFFF;
+	height: 9rem;
+	width: 100%;
+	line-height: 4rem;
+
+	font-style: italic;
+
+	background: -webkit-linear-gradient(top, #539CE6 0%, #5CADFF 100%); 
+	background: -o-linear-gradient(top, #539CE6 0%, #5CADFF 100%); 
+	background: -moz-linear-gradient(top, #539CE6 0%, #5CADFF 100%); 
+	background: linear-gradient(top, #539CE6 0%, #5CADFF 100%); 	
+}
+
+.header-band-title {
+
+	font-size: 2rem;
+	
+}
+
+.header-band-subtitle {
+
+	font-size: 1rem;
+}
+
+.navbar {
+
+	height: 3rem;
+	width: 100%;
+	margin-bottom: 3rem;
+
+	color: #FFFFFF;
+
+	background-color: #3399FF;
+
+	line-height: 3rem;
+}
+
+.navbar-title {
+
+	background-color: #3399FF;
+
+	font-family: "Pacifico", Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	text-align: center;
+	
+}
+
+.horizontal-menu {
+
+	height: 3rem;
+	width: 100%;
+
+	border-left: 2px solid #5CADFF;
+}
+
+.horizontal-menu ul {
+
+	margin:0;
+	padding:0;
+
+	list-style: none;
+}
+
+.horizontal-menu li {
+
+	float: left;
+}
+
+.horizontal-menu a:link, .horizontal-menu a:visited {
+
+	display: block;
+	height: 3rem;
+	width: 150px;
+
+	border-right: 2px solid #5CADFF;
+
+	background-color: #3399FF;
+
+	font-family: "PT sans", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-decoration:none;
+	text-align:center;
+	text-transform: uppercase;
+}
+
+.horizontal-menu a:hover, .horizontal-menu a:active, .horizontal-menu li ul li a:hover, .horizontal-menu li ul li a:active{
+
+	background-color:#6699FF;
+}
+
+.horizontal-menu ul li ul {
+
+	display: none;
+}
+
+.horizontal-menu ul li:hover ul {
+
+	display: block;
+}
+
+.horizontal-menu li:hover ul li {
+
+	float: none;
+}
+
+.horizontal-menu li ul {
+
+ 	position: absolute;
+ 	z-index: 1;
+ }
+
+.thumb {
+
+	height: 22.5rem;
+
+	border: 2px solid #B3B3BC;
+
+	background-color: #E7E7EC;
+}
+
+.thumb a {
+
+	color: #5E5E6E;
+	text-decoration: none;
+}
+
+.thumb-title {
+
+	padding-top: 3rem;
+
+	font-size: 1.5rem;
+	font-weight: bold;
+	text-align: center;
+}
+
+.thumb-img {
+
+	width: 100%;
+	height: 70%;
+}
+
+.thumb a:hover:after {
+
+	content: '';
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	background-color: rgba(255, 255, 255, 0.4);
+}
+
+.code
+{
+	display: inline-block;
+	border-width: 2px;
+	border-style: solid;
+	border-color: black;
+	background-color: black;
+	color: white;
+	width: 100%;
+}
+
+.function
+{
+	color: #0000FF;
+}
+
+.code var
+{
+	color: #00ff00;
+}
+
+.key
+{
+	color: #FF00FF;
+}
+
+/**********************************************************************************************************************************
+																STATE
+/**********************************************************************************************************************************/
+
+/**********************************************************************************************************************************
+																THEME
+/**********************************************************************************************************************************/
+
+/*************************************************************End CSS style **********************************************************/

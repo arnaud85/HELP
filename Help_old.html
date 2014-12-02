@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="help.css">
+	<title>HELP</title>
+	</head>
+
+	<body>
+		<div class="main">
+			<div class="container">
+
+				<h1>Les fichiers de log</h1>
+
+				<h2>Fichier de temps</h2>
+
+				<p>Ce fichier rescence les fichiers de données sous forme netCDF d'une manière exhaustive.
+				Il est donc indispensable dès lors que l'on possède un jeu de données quelconque. De plus, 
+				il doit être impérativement mis à jour dès que l'on complète un jeu de données par de nouvelles données.</p>
+
+				<p>Pour créer ce fichier, lors de la création d'un nouveau jeu de données, il faut effectuer la commande suivante :</p> 
+
+				<p class="code">TimesUpdate -r nom_fichier_temps.nc fichier(s)_données.nc</p>
+
+				<p>Lorsque l'on désire mettre à jour des données en complétant les données préexistantes avec de nouvelles données, il 
+				taper la commande suivante pour mettre à jour le fichier de temps :</p>
+
+				<p><em>TimesUpdate -u nom_fichier_temps.nc fichier(s)_données.nc</em></p>
+
+				<p>Enfin, si l'on désire supprimer des données, il faut également mettre à jour ce fichier de temps. Pour ce faire, nous procéderons en trois étapes :
+					<ul>
+						<li>Effacer le fichier de données de son choix</li>
+						<li>Entrer la commande suivante pour annuler la prise en compte de ce fichier de données dans le fichier de temps (met le temps correspondant au fichier de données correspondant à "000000000") : 
+							<em>TimesUpdate -d nom_fichier_temps.nc mauvais_fichier_données.nc</em></li>
+						<li>Enfin, supprimer cette ligne dans le fichier de temps avec la commande suivante : <em>DDClearTimes nom_fichier_temps.nc</em></li>
+					</ul>
+				</p>
+
+				<p>A noter que la commande <em>TimesUpdate</em> en création et en mise à jour à également pour effet de compresser les données recsencées au format <em>.gz</em></p>
+
+				<h2>Fichiers d'information</h2>
+
+				<p>Ce fichier contient des informations sur la nature des données stockées : type, taille, nature, etc ...</p>
+
+				<p>Il est donc indispensable de le créer et d ele mettre à jour à chaque fois que l'on désire créer un nouveau jeu de données ou bien mettre à jour des données préexistantes</p>
+
+				<p>Pour ce faire, nous lançons le script PHP suivant : </p>
+
+				<p><em>php UpdateInfo.php chemin_vers_dossier_données/prefix</em></p>
+
+				<p><em>prefix</em> désigne l'abréviation que l'on utilise pour désigner les fichiers de données en fonction de l'instrument utilisé. Par exemple :
+				<ul>
+					<li>Pour le magnétomètre : <em>mag</em></li>
+					<li>Pour les ephémérides : <em>ephem</em></li>
+					<li>etc ...</li>
+				</ul></P>
+
+				<h2>Fichier de cache</h2>
+
+				<p>Ce fichier nous donne des informations sur la manipulation des données en elles-mêmes.</p>
+
+				<p>Ainsi, dès que l'on dérire accéder à des données, pour les tracer par exemple, le serveur va d'abord les décompresser puis les lire afin de pouvoir les exploiter.</p>
+
+				<p>Il faut donc procéder en deux étapes pour (créer) mettre à jour ce fichier de cache
+					<ul>
+						<li>Copier et renommer le fichier <em>Cash.template</em> en <em>prefix_cache.nc</em> : <em>copy(chemin/Cash.template, <em>prefix_cache.nc</em>);</em></li>
+						<li>Modifier le nom par défaut dans le fichier <em>Clean.template</em> et le remplacer par un nom correspondant au préfixe avant de transférer le fux dans un fichier nommé simplement <em>clean</em>. Ce fichier devient maintenant opérationnel pour ce jeu de  données : 
+							<p><em>$SED = "sed 's/NAME/".$prefix."/g'"." "."chemin/Clean.template > clean";</em></p>
+							<p><em>exec($SED, $outval, $retval);</em></p>
+							<p><em>exec('chmod ugo+x clean');</em></p>
+						</li>
+					</ul>
+				</p>
+
+				<p>C'est ainsi que ces manipulations, décompressions et ouverture de fichiers en lecture, sont mémorisées dans le fichier de cache.</p>
+
+				<h1>Mise à jour de l'abre AMDA</h1>
+
+				<p>Maintenant que la base de  données est mise à jour, il faut que ces changements apparaissent lors de la consultation de l'outil AMDA.</p>
+
+				<p>Ainsi, les modifications apparaitront sur l'interface d'AMDA et il sera alors possible de manipuler ces données (visualisation graphique, etc ...).</p>
+
+				<p>Pour ce faire, il faut lancer le script PHP suivant : </p>
+
+				<p><em>php AmdaUpdate.php</em></p>
+
+				<h1>Mise à jour du tableau des missions</h1>
+
+				<p>Il existe un tableau récapitulant tous les jeux de données actuellement présents dans la base de données AMDA.</p>
+
+				<p>Îl convient ainsi de le mettre à jour pour toujours a voir une vision globale des données présentes dans la base de données.</p>
+
+				<p>Pour mettre à jour ce tableau, il faut lancer le script PHP suivant :</p>
+
+				<p><em>php chemin/updateDataBaselog chemin_dossier_données nom_personne_effectuant_commande</em></p>
+
+				<p>Pour information, le nom de la personne qui met à jour ce tableau avec telle ou telle jeu de données est inscrit sur celui-ci (<em>nom_personne_effectuant_commande</em>).</p>
+
+			</div>
+		</div>		
+	</body>
+
+</html>

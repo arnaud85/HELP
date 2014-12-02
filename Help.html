@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+	<meta charset="UTF-8">
+	<title>Mise a jour des donnees</title>
+	<style type="text/css">
+
+		h1 { 
+
+			border-bottom: 1px solid #7a7a7a;
+
+			font-size: 1.5em;
+		}
+
+		h2 { font-size: 1.325em; }
+		h3{ font-size: 1.25em; }
+		h4{ font-size: 1.5em; } 
+		h5, h6{ font-size: 1em; }
+
+		ul { 
+	
+			margin-left: 20px; 
+			margin-bottom: 1.5em;
+
+			list-style: square inside;
+			
+			overflow: hidden;
+		}
+
+		ul ul, ul ol {
+			
+			margin-bottom: 0;
+
+			list-style: disc inside;
+		}
+
+		ol {
+			
+			margin-left: 20px;
+			margin-bottom: 1.5em;
+
+			list-style: decimal inside;
+			
+			overflow: hidden;
+		}
+
+		ol ol, ul ol {
+			
+			margin-bottom: 0;
+
+			list-style: lower-roman inside;
+		}
+
+		.main {
+
+			position: relative; /* NEW */
+
+			height: auto !important;
+			min-height: 100%;
+
+			clear: both;
+		}
+
+		.container {
+
+			position: relative;
+
+			padding-bottom: 6rem; /* NEW */
+			margin: 0 auto;
+			width: 60%;
+		}
+
+		.code {
+
+			display: inline-block;
+			border-width: 2px;
+			border-style: solid;
+			border-color: black;
+			background-color: black;
+			color: white;
+			width: 100%;
+		}
+
+
+	</style>
+	</head>
+
+	<body>
+		<div class="main">
+			<div class="container">
+
+				<h1>Mise a jour des données</h1>
+
+				<p>Ce document présente les la méthode ainsi que les différents scripts qui servent à la mise à jour de la base de données AMDA.</p>
+
+				<p>Cette mise à jour se déroule en plusieurs étapes distinctes qui sont les suivantes : 
+				<ol>
+					<li>Téléchargement des données</li>
+					<li>Conversion des données au format NetCDF</li>
+					<li>Création d'un nouveau jeu de données sur AMDA (si besoin est)</li>
+					<li>Insertion des données dans la base de données AMDA</li>
+					<li>Création des fichiers d'information sur les données : temps, variables et cache</li>
+					<li>Mise à jour de l'interface graphique d'AMDA</li>
+					<li>Mise à jour du tableau de correspondance des ID</li>
+				</ol>
+				</p>
+
+				<h2>1 - Téléchargement des données</h2>
+
+				<p>Les données sont récupérées sur le site du <em>Planetary Data System</em> édité par la <em>NASA</em>.</p>
+
+				<p>Le script PHP qui se charge de cette opération est : <strong>downloadPDS.php</strong>.</p>
+
+				<p>Pour le lancer, nous effectuons la commande suivante :</p>
+
+				<p class="code">php downloadPDS.php</p>
+
+				<p>Nous tombons alors sur un menu nous demandons de choisir le jeu de données à télécharger.</p>
+
+				<p>Après comfirmation du choix, le script va réaliser les étapes suivantes : 
+				<ol>
+					<li>Téléchargement des fichiers <em>.LBL</em> associés au fichier de données <em>.TAB</em>.</li>
+					<li>Récupération de la date de dernière mise à jour des données par le <em>PDS</em> sur les fichiers <em>.LBL</em></li>
+					<li>Comparaison de cette date avec la date de dernière mise à jour de la base de donnée AMDA stockée dans le fichier <em>timeStamp</em>.</li>
+					<li>Si la date récupérée sur le fichier <em>.LBL</em> est plus récente que celle présente sur le fichier <em>timeStamp</em>, alors on procède au téléchargement du fichier de données <em>.TAB</em>.</li>
+					<li>Mise à jour de la date dans le fichier <em>timeStamp</em>.</li>
+				</ol>
+				</p>
+
+				<p>Il est à noter que ce script utilise la bibliothèque <strong>simple_html_dom.php</strong> pour parcourir le <em>DOM</em> du site web concerné et trouver les liens de téléchargement des données. Il est donc essentiel de vérifier que ce fichier est accessible !</p>
+
+				<h2>2 - Conversion au format NetCDF</h2>
+
+				<p>Maintenant que l'on a récupéré la dernière version des données désirées, nous allons convertir ces fichiers de données au format NetCDF afin d'optimiser leur futur stockage sur AMDA.</p>
+
+				<p>Pour ce faire, nous allons utiliser le script intitulé : <strong>convert2nc.php</strong>.</p>
+
+				<p>Pour le lancer, saisir la commande ci-dessous : </p>
+
+				<p class="code">php convert2nc.php</p>
+
+				<p>Le script nous demande alors de préciser :
+				<ol>
+					<li>Le chemin absolu vers le dossier contenant les données brutes à convertir.</li>
+					<li>Le chemin absolu vers le fichier de conversion utilisé pour créer le nouveau fichier de données au format NetCDF (ce fichier est unique pour chaque jeu de données!).</li>
+				</ol>
+				</p>
+
+				<p>A noter que ce script utilise l'exécutable nommé <strong>convert2nc</strong> (codé en C++) pour effectuer la conversion au format NetCDF. Il convient donc de vérifier que l'on est bien en possession de celui-ci.</p>
+
+				<h2>3 - Création d'un nouveau jeu de données</h2>
+
+				<p>Parfois, il ne s'agit pas d'une simple mise à jour des données présentes dans AMDA mais un réel ajout de nouvelles données non présentes initialement.</p>
+
+				<p>Il faut donc créer un nouveau jeu de données. Ceci s'accompagne d'une mise à jour du fichier <em>DDsys.xml</em>. En effet, ce fichier contient l'intégralité des jeux de données présent dans la base de données AMDA.</p>
+
+				<p>Le script se lance avec la commande :</p>
+
+				<p class="code">php addNewDataset.php</p>
+
+				<p>Celui-ci nous demande alors de renseigner les informations suivantes :
+				<ul>
+					<li>Le chemin absolu du dossier que l'on désire créer pour stocker le nouveau jeu de données (ne pas oublier le "/" à la fin du chemin!).</li>
+					<li>Le nom de la mission scientifique.</li>
+					<li>L'instrument de mesure utilisé.</li>
+					<li>La phase de la mission en question.</li>
+					<li>La résolution des données scientifiques.</li>
+					<li>Le chemin absolu vers le fichier <em>DDsys.xml</em> mentionné plus haut.</li>
+				</ul>
+				</p>
+
+				<p>Après comfirmation des informations fournies, le script va procéder à la création du dossier qui accueillera le nouveau jeu de données et mettra également à jour le fichier <em>DDsys.xml</em>.</p>
+
+				<h2>4 - Insertion des nouvelles données dans AMDA</h2>
+
+				<p>Vient ensuite la phase d'insertion des nouvelles données dans la base de données AMDA.</p>
+
+				<p>Pour ce faire, nous utiliserons le script nommé <strong>syncData.php</strong> que nous lançons grâce à la commande suivante :</p>
+
+				<p class="code">php syncData.php</p>
+
+				<p>Ce script nous demande alors naturellement de lui renseigner le dossier source ainsi que le dossier où envoyer les données sur AMDA.</p>
+
+				<p>Il nous demande également de préciser le chemin vers le fichier <em>LOCK</em> : ce fichier est simplement copié dans le dossier de destination pour préciser que l'on est en train d'écrire dedans. Ainsi, le serveur nous "donne la main", en quelques sortes, quand il copie ce fichier dans le dossier de destination; il nous donne l'autorisation d'écrire à l'intérieur de celui-ci.</p>
+
+				<p>Attention! Il faut préciser les chemins absolus des dossiers en question et, de plus, il ne faut pas mettre de "/" à la fin du chemin!</p>
+
+				<h2>5 - Création des fichiers d'informations sur les données</h2>
+
+				<p>Une fois que les données sont mises à jour sur AMDA, il nous faut également mettre à jour les fichiers d'informations qui sont au nombre de quatre (<em>prefix</em> désignant un identifiant pour le jeu de données correspondant) :
+				<ol>
+					<li>Le fichier <em>prefix_times.nc</em> qui répertorie les échéances temporelles des fichiers NeCDF précédemment créés et insérés dans AMDA.</li>
+					<li>Le fichier <em>prefix_info.xml</em> contenant des informations sur la nature des données</li>
+					<li>Le fichier <em>prefix_info.nc</em> similaire au fichier précédant mais sous le format NetCDF.</li>
+					<li>Le fichier de cache <em>prefix_cache.nc</em>.</li>
+				</ol>
+				</p>
+
+				<p>Le script <strong>configureInfoFiles.php</strong> se lance comme suit :</p>
+
+				<p class="code">php configureInfoFiles.php</p> 
+
+				<p>Il va nous demander alors de renseigner :
+				<ol>
+					<li>Le chemin absolu vers le dossier d'AMDA contenant le jeu de données mise à jour.</li>
+					<li>Le nom de la mission scientifique.</li>
+					<li>Le nom de l'instrument utilisé pour les mesures.</li>
+					<li>La résolution des données en secondes (ou bien "HR" pour "haute résolution").</li>
+					<li>Le chemin absolu vers les fichiers <em>Clean.template</em> et <em>Cash.template</em> nécessaires pour la création du fichier de cache.</li>
+				</ol>
+				</p>
+
+				<p>Dans un premier temps, c'est le fichier <em>prefix_time.nc</em> qui est soit créé, s'il n'existe pas (nouveau jeu de données) ou bien mis à jour. Cette opération est effectuée à l'aide de l'exécutable <strong>TimesUpdate</strong>; il faut donc s'assurer que celui-ci est disponible.</p>
+
+				<p>Ensuite, un fichier <em>prefix_info.xml</em> est créé puis, à partir de celui-ci, le fichier <em>prefix_info.nc</em>. Là encore, il faut s'assurer de pouvoir accéder à l'exécutable <strong>infoLocal2nc</strong>.</p>
+
+				<p>Enfin, le fichier <em>Clean.template</em> est copié dans le répertoir et modifié pour s'adapter au jeu de données actuel : il se nomme désormais <em>clean</em>. De plus, le fichier de cach <em>Cash.template</em> est lui aussi copié et renommé en <em>prefix_cache.nc</em>.</p>
+
+				<p>Pour finir, la commande <strong>makeDDsys</strong> met à jour le fichier <em>refer.nc</em> qui tient lieu de référence pour les jeux de données (équivalent du fichier <em>DDsys.xml</em> mais cette fois-ci au format NetCDF).</p>
+
+				<h2>6 - Mise à jour de l'arbre AMDA</h2>
+
+				<p>Lorsque toutres les mises à jour sont opérationnelles, il est temps de mettre à jour l'interface graphique d'AMDA afin de  pouvoir effectivement exploiter ces nouveaux jeux de données.</p>
+
+				<p>Pour ce faire, nous utiliserons le script <strong>AmdaUpdate.php</strong> que nous lancerons classiquement comme ceci :</p>
+
+				<p class="code">php AmdaUpdate.php</p>
+
+				<h2>7 - Mise à jour du tableau récapitulatif des ID</h2>
+
+				<p>Enfin, il convient de mettre à jour le tableau qui rescence les jeux de données et fait la correspondance avec leurs ID.</p>
+
+				<p>Cette mise à jour s'accompagne d'une sorte de signature qui apparait à côté du jeu de donnée sur le tableau permettant de connaitre l'auteur de la dernière mise à jour du jeu de données.</p>
+
+				<p>Nous lançons alors le script <strong>updateDataBaselog</strong> comme ceci :</p>
+
+				<p class="code">php updateDataBaselog chemin_dossier_données nom_personne_effectuant_commande</p>
+
+			</div>
+		</div>		
+	</body>
+
+</html>
