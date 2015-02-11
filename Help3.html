@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html>
+
+  	<head>
+	    <meta charset="UTF-8">
+	    <title>Formulaire</title>
+	    <style>
+
+	    	h1 { 
+
+				border-bottom: 1px solid #7a7a7a;
+
+				font-size: 1.5em;
+			}
+
+			h2 { font-size: 1.325em; }
+			h3{ font-size: 1.25em; }
+			h4{ font-size: 1.5em; } 
+			h5, h6{ font-size: 1em; }
+
+			ul { 
+		
+				margin-left: 20px; 
+				margin-bottom: 1.5em;
+
+				list-style: square inside;
+				
+				overflow: hidden;
+			}
+
+			ul ul, ul ol {
+				
+				margin-bottom: 0;
+
+				list-style: disc inside;
+			}
+
+			ol {
+				
+				margin-left: 20px;
+				margin-bottom: 1.5em;
+
+				list-style: decimal inside;
+				
+				overflow: hidden;
+			}
+
+			ol ol, ul ol {
+				
+				margin-bottom: 0;
+
+				list-style: lower-roman inside;
+			}
+
+			.main {
+
+				position: relative; /* NEW */
+
+				height: auto !important;
+				min-height: 100%;
+
+				clear: both;
+			}
+
+			.container {
+
+				position: relative;
+
+				padding-bottom: 6rem; /* NEW */
+				margin: 0 auto;
+				width: 60%;
+			}
+
+	    	.code {
+
+				display: inline-block;
+				border-width: 2px;
+				border-style: solid;
+				border-color: black;
+				background-color: black;
+				color: white;
+				width: 100%;
+			}
+
+	    	.help-table {
+
+	    		border-collapse: collapse;
+
+				margin-left: auto; 
+				margin-right: auto;
+			}
+
+			.help-table-head {
+
+				border: 4px solid black;
+
+				width: 1600px;
+				height: 2rem;
+
+				background-color: #292929;
+
+				color: #CCCCCC;
+				font-weight: bold;	
+				text-align: center;
+			}
+
+			.help-table-entry-1 {
+
+				border: 2px solid black;
+
+				width: 800px;
+				height: 2rem;
+				
+				background-color: #E9E9F1;
+
+				font-weight: bold;
+				text-align: center;
+			}
+
+			.help-table-command-1 {
+
+				border: 2px solid black;
+
+				width: 800px;
+				height: 2rem;
+
+				background-color: #E9E9F1;
+
+				font-style: italic;
+				text-align: center;
+			}
+
+			.help-table-entry-2 {
+
+				border: 2px solid black;
+
+				width: 800px;
+				height: 2rem;
+
+				font-weight: bold;
+				text-align: center;
+			}
+
+			.help-table-command-2 {
+
+				border: 2px solid black;
+
+				width: 800px;
+				height: 2rem;
+
+				font-style: italic;
+				text-align: center;
+			}
+
+			.tags
+			{
+				font-size: 1.4rem;
+				font-style: italic;
+				font-weight: bold;
+			}
+
+			a:link 
+			{ 
+				color: #000066; 
+				text-decoration: none;
+			}
+
+			a:visited 
+			{ 
+				color: #000066; 
+				text-decoration: none; 
+			}
+
+			a:hover 
+			{ 
+				color: #000066;
+				text-decoration: underline;
+				cursor: pointer;
+			}
+
+	    </style>
+  	</head>
+
+  	<body>
+  		<div class="main">
+			<div class="container">
+
+				<h1>Tags</h1>
+
+				<p class="tags">
+				    <a href="#TimesUpdate">TimesUpdate</a>
+				    <a href="#infoLocal2nc">infoLocal2nc</a>
+				    <a href="#UpdateInfo">UpdateInfo</a>
+				    <a href="#makeDDsys">makeDDsys</a>
+				    <a href="#AmdaUpdate">AmdaUpdate</a>
+				    <a href="#plots">AMDA_plots_logs</a>
+				    <a href="#SPICE">SPICE</a>
+				</p>
+
+				<h1>Formulaire</h1>
+  	
+			  	<table class="help-table" id="TimesUpdate">
+			  		<tr>
+			  			<td class="help-table-head ">TimesUpdate : mettre à jour le fichier netCDF de temps</td>
+			  		</tr>
+			  	</table>
+			  	<table class="help-table">
+			  		<tr>
+					  <td class="help-table-entry-1">(Re)Créer le fichier *_times.nc</td>
+					  <td class="help-table-command-1">TimesUpdate -r *_times.nc fichier1.nc fichier2.nc ... fichierN.nc</td>		
+					</tr>
+					<tr>
+					  <td class="help-table-entry-2">Mettre à jour le fichier *_times.nc</td>
+					  <td class="help-table-command-2">TimesUpdate -u *_times.nc fichier1.nc fichier2.nc ... fichierN.nc</td>		
+					</tr>
+					<tr>
+					  <td class="help-table-entry-1">Mettre à 0 la ligne représentant un fichier référencé dans *_times.nc</td>
+					  <td class="help-table-command-1">TimesUpdate -d *_times.nc mauvais_fichier.nc</td>		
+					</tr>
+					<tr>
+					  <td class="help-table-entry-2">Supprimer définitivement un fichier référencé dans *_times.nc</td>
+					  <td class="help-table-command-2">DDClearTimes *_times.nc</td>		
+					</tr>
+				</table>
+
+				<br><br>
+
+				<table class="help-table" id="infoLocal2nc">
+			  		<tr>
+			  			<td class="help-table-head ">infoLocal2nc : créer le fichier netCDF d'informations</td>
+			  		</tr>
+			  	</table>
+			  	<table class="help-table">
+			  		<tr>
+					  <td class="help-table-entry-1">Créer le fichier netCDF d'informations à partir du fichier XML homologue</td>
+					  <td class="help-table-command-1">infoLocal2nc *_info.xml *_info.nc</td>		
+					</tr>
+				</table>
+
+				<br><br>
+
+				<table class="help-table" id="UpdateInfo">
+			  		<tr>
+			  			<td class="help-table-head ">UpdateInfo : mettre à jour le fichier netCDF d'informations</td>
+			  		</tr>
+			  	</table>
+			  	<table class="help-table">
+			  		<tr>
+					  <td class="help-table-entry-1">Mettre à jour Start/Stop time sur MANUNJA</td>
+					  <td class="help-table-command-1">php /home/budnik/AMDANEW/DDLIB/bin/UpdateInfo.php prefixe_fichiers_info</td>		
+					</tr>
+					<tr>
+					  <td class="help-table-entry-2">Mettre à jour Start/Stop time sur CDPP1</td>
+					  <td class="help-table-command-2">php /usr/local/AMDA/DDLIB/bin/UpdateInfo.php prefixe_fichiers_info</td>		
+					</tr>
+				</table>
+
+				<br><br>
+
+				<table class="help-table" id="makeDDsys">
+			  		<tr>
+			  			<td class="help-table-head ">makeDDsys : créer/mettre à jour refer.nc</td>
+			  		</tr>
+			  	</table>
+			  	<table class="help-table">
+					<tr>
+					  <td class="help-table-entry-1">Créer/mettre à jour le fichier netCDF qui rescence tous les datasets : refer.nc</td>
+					  <td class="help-table-command-1">makeDDsys</td>		
+					</tr>
+				</table>
+
+				<br><br>
+
+			  	<table class="help-table" id="AmdaUpdate">
+			  		<tr>
+			  			<td class="help-table-head ">AmdaUpdate : mettre à jour l'arbre AMDA</td>
+			  		</tr>
+			  	</table>
+			  	<table class="help-table">
+					<tr>
+					  <td class="help-table-entry-1">Faire une mise à jour de l'arbre AMDA sur APUS</td>
+					  <td class="help-table-command-1">sudo php /home/natacha/AMDA-NG/trunk/php/AmdaUpdate.php</td>		
+					</tr>
+					<tr>
+					  <td class="help-table-entry-1">Faire une mise à jour de l'arbre AMDA sur APUS en installant un nouveau jeu de données</td>
+					  <td class="help-table-command-1">sudo php /home/natacha/AMDA-NG/trunk/php/AmdaUpdate.php install</td>		
+					</tr>
+				</table>
+
+				<br><br>
+
+			  	<table class="help-table" id="plots">
+			  		<tr>
+			  			<td class="help-table-head ">AMDA Plots</td>
+			  		</tr>
+			  	</table>
+			  	<table class="help-table">
+					<tr>
+					  <td class="help-table-entry-1">Adresse du fichier de log</td>
+					  <td class="help-table-command-1">@APUS : /home/natacha/AMDA-NG/trunk/data/biegun/RES/Plot1_/err</td>		
+					</tr>
+					<tr>
+					  <td class="help-table-entry-2">- 10</td>
+					  <td class="help-table-command-2">Problème avec les données --> Vérifier leur présence et start/stop time</td>		
+					</tr>
+					<tr>
+					  <td class="help-table-entry-1">- 11</td>
+					  <td class="help-table-command-1">Problème avec le cache --> Vérifier que le nom du fichier cache précisé dans DDsys.xml soit le même que celui dans la base de donnée</td>		
+					</tr>
+					<tr>
+					  <td class="help-table-entry-2">- 12</td>
+					  <td class="help-table-command-2">Problème de droits d'écriture --> Vérifier les droits sur les fichiers/dossiers de la base de donnée</td>		
+					</tr>
+					<tr>
+					  <td class="help-table-entry-1">- 35</td>
+					  <td class="help-table-command-1">Problème de LOCK --> Supprimer le fichier LOCK dans le dossier correspondant aux données à tracer dans la base de donnée</td>		
+					</tr>
+				</table>
+
+				<br><br>
+
+				<table class="help-table" id="SPICE">
+					<tr>
+			  			<td class="help-table-head ">SPICE kernels</td>
+			  		</tr>
+				</table>
+				<table class="help-table">
+					<tr>
+					  <td class="help-table-entry-1">SPK (Speed/Position Kernel)</td>
+					  <td class="help-table-command-1">Vitesse et position des objets célestes</td>		
+					</tr>
+					<tr>
+					  <td class="help-table-entry-2">PCK (Planetary Constant Kernel)</td>
+					  <td class="help-table-command-2">Taille, forme, orientation des palnètes du système solaire</td>		
+					</tr>
+					<tr>
+					  <td class="help-table-entry-1">CK (C-Matrix Kernel)</em></td>
+					  <td class="help-table-command-1">Orientation du vaisseau spatial</td>		
+					</tr>
+					<tr>
+					  <td class="help-table-entry-2">FK (Frame Kernel)</td>
+					  <td class="help-table-command-2">Placement/changement de référentiel</td>		
+					</tr>
+				</table>
+
+  			</div>
+		</div>	
+  	</body>
+
+</html>
