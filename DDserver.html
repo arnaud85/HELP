@@ -191,6 +191,7 @@
 				<p class="tags">
 				    <a href="#TimesUpdate">TimesUpdate</a>
 				    <a href="#nc2nc">nc2nc</a>
+				    <a href="#join_nc">join_nc</a>
 				    <a href="#infoLocal2nc">infoLocal2nc</a>
 				    <a href="#UpdateInfo">UpdateInfo</a>
 				    <a href="#updateDataBaseLog">updateDataBaseLog</a>
@@ -236,6 +237,20 @@
 			  		<tr>
 					  <td class="help-table-entry-1">Corriger start/stop times dans un fichier netCDF de données</td>
 					  <td class="help-table-command-1">nc2nc fichier.nc -bStartTime -eStopTime -gzip/unzip</td>		
+					</tr>
+				</table>
+
+				<br><br>
+
+				<table class="help-table" id="join_nc">
+			  		<tr>
+			  			<td class="help-table-head ">join_nc : Mettre à jour le tableau d'énergie</td>
+			  		</tr>
+			  	</table>
+			  	<table class="help-table">
+			  		<tr>
+					  <td class="help-table-entry-1">Fusionner le fichier d'énergie et le fichier d'infos (spectros)</td>
+					  <td class="help-table-command-1">join_nc *_constants.nc *_info.nc</td>		
 					</tr>
 				</table>
 
