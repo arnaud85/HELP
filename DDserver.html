@@ -91,6 +91,11 @@
 				margin-right: auto;
 			}
 
+			.help-table tr:nth-child(odd){
+
+			 	background-color:#E9E9F1;
+			}
+
 			.help-table-head {
 
 				border: 4px solid black;
@@ -105,33 +110,7 @@
 				text-align: center;
 			}
 
-			.help-table-entry-1 {
-
-				border: 2px solid black;
-
-				width: 800px;
-				height: 2rem;
-				
-				background-color: #E9E9F1;
-
-				font-weight: bold;
-				text-align: center;
-			}
-
-			.help-table-command-1 {
-
-				border: 2px solid black;
-
-				width: 800px;
-				height: 2rem;
-
-				background-color: #E9E9F1;
-
-				font-style: italic;
-				text-align: center;
-			}
-
-			.help-table-entry-2 {
+			.help-table-entry {
 
 				border: 2px solid black;
 
@@ -142,7 +121,8 @@
 				text-align: center;
 			}
 
-			.help-table-command-2 {
+
+			.help-table-command {
 
 				border: 2px solid black;
 
@@ -209,20 +189,20 @@
 			  	</table>
 			  	<table class="help-table">
 			  		<tr>
-					  <td class="help-table-entry-1">(Re)Créer le fichier *_times.nc</td>
-					  <td class="help-table-command-1">TimesUpdate -r *_times.nc fichier1.nc fichier2.nc ... fichierN.nc</td>		
+					  <td class="help-table-entry">(Re)Créer le fichier *_times.nc</td>
+					  <td class="help-table-command">TimesUpdate -r *_times.nc fichier1.nc fichier2.nc ... fichierN.nc</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-2">Mettre à jour le fichier *_times.nc</td>
-					  <td class="help-table-command-2">TimesUpdate -u *_times.nc fichier1.nc fichier2.nc ... fichierN.nc</td>		
+					  <td class="help-table-entry">Mettre à jour le fichier *_times.nc</td>
+					  <td class="help-table-command">TimesUpdate -u *_times.nc fichier1.nc fichier2.nc ... fichierN.nc</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-1">Mettre à 0 la ligne représentant un fichier référencé dans *_times.nc</td>
-					  <td class="help-table-command-1">TimesUpdate -d *_times.nc mauvais_fichier.nc</td>		
+					  <td class="help-table-entry">Mettre à 0 la ligne représentant un fichier référencé dans *_times.nc</td>
+					  <td class="help-table-command">TimesUpdate -d *_times.nc mauvais_fichier.nc</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-2">Supprimer définitivement un fichier référencé dans *_times.nc</td>
-					  <td class="help-table-command-2">DDClearTimes *_times.nc</td>		
+					  <td class="help-table-entry">Supprimer définitivement un fichier référencé dans *_times.nc</td>
+					  <td class="help-table-command">DDClearTimes *_times.nc</td>		
 					</tr>
 				</table>
 
@@ -235,8 +215,8 @@
 			  	</table>
 			  	<table class="help-table">
 			  		<tr>
-					  <td class="help-table-entry-1">Corriger start/stop times dans un fichier netCDF de données</td>
-					  <td class="help-table-command-1">nc2nc fichier.nc -bStartTime -eStopTime -gzip/unzip</td>		
+					  <td class="help-table-entry">Corriger start/stop times dans un fichier netCDF de données</td>
+					  <td class="help-table-command">nc2nc fichier.nc -bStartTime -eStopTime -gzip/unzip</td>		
 					</tr>
 				</table>
 
@@ -249,8 +229,8 @@
 			  	</table>
 			  	<table class="help-table">
 			  		<tr>
-					  <td class="help-table-entry-1">Fusionner le fichier d'énergie et le fichier d'infos (spectros)</td>
-					  <td class="help-table-command-1">join_nc *_constants.nc *_info.nc</td>		
+					  <td class="help-table-entry">Fusionner le fichier d'énergie et le fichier d'infos (spectros)</td>
+					  <td class="help-table-command">join_nc *_constants.nc *_info.nc</td>		
 					</tr>
 				</table>
 
@@ -263,8 +243,8 @@
 			  	</table>
 			  	<table class="help-table">
 			  		<tr>
-					  <td class="help-table-entry-1">Créer le fichier netCDF d'informations à partir du fichier XML homologue</td>
-					  <td class="help-table-command-1">infoLocal2nc *_info.xml *_info.nc</td>		
+					  <td class="help-table-entry">Créer le fichier netCDF d'informations à partir du fichier XML homologue</td>
+					  <td class="help-table-command">infoLocal2nc *_info.xml *_info.nc</td>		
 					</tr>
 				</table>
 
@@ -277,12 +257,12 @@
 			  	</table>
 			  	<table class="help-table">
 			  		<tr>
-					  <td class="help-table-entry-1">Mettre à jour Start/Stop time sur MANUNJA</td>
-					  <td class="help-table-command-1">php /home/budnik/AMDANEW/DDLIB/bin/UpdateInfo.php prefixe_fichiers_info</td>		
+					  <td class="help-table-entry">Mettre à jour Start/Stop time sur MANUNJA</td>
+					  <td class="help-table-command">php /home/budnik/AMDANEW/DDLIB/bin/UpdateInfo.php prefixe_fichiers_info</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-2">Mettre à jour Start/Stop time sur CDPP1</td>
-					  <td class="help-table-command-2">php /usr/local/AMDA/DDLIB/bin/UpdateInfo.php prefixe_fichiers_info</td>		
+					  <td class="help-table-entry">Mettre à jour Start/Stop time sur CDPP1</td>
+					  <td class="help-table-command">php /usr/local/AMDA/DDLIB/bin/UpdateInfo.php prefixe_fichiers_info</td>		
 					</tr>
 				</table>
 
@@ -295,8 +275,8 @@
 			  	</table>
 			  	<table class="help-table">
 			  		<tr>
-					  <td class="help-table-entry-1">Mettre à jour le memento sur MANUNJA</td>
-					  <td class="help-table-command-1">php /home/budnik/depotDECODER/TOOLS/DataBaseLog/updateDataBaseLog.php chemin_vers_dataset</td>		
+					  <td class="help-table-entry">Mettre à jour le memento sur MANUNJA</td>
+					  <td class="help-table-command">php /home/budnik/depotDECODER/TOOLS/DataBaseLog/updateDataBaseLog.php chemin_vers_dataset</td>		
 					</tr>
 				</table>
 
@@ -309,8 +289,8 @@
 			  	</table>
 			  	<table class="help-table">
 					<tr>
-					  <td class="help-table-entry-1">Créer/mettre à jour le fichier netCDF qui rescence tous les datasets : refer.nc</td>
-					  <td class="help-table-command-1">makeDDsys</td>		
+					  <td class="help-table-entry">Créer/mettre à jour le fichier netCDF qui rescence tous les datasets : refer.nc</td>
+					  <td class="help-table-command">makeDDsys</td>		
 					</tr>
 				</table>
 
@@ -323,12 +303,12 @@
 			  	</table>
 			  	<table class="help-table">
 					<tr>
-					  <td class="help-table-entry-1">Faire une mise à jour de l'arbre AMDA sur APUS</td>
-					  <td class="help-table-command-1">sudo php /home/natacha/AMDA-NG/trunk/php/AmdaUpdate.php</td>		
+					  <td class="help-table-entry">Faire une mise à jour de l'arbre AMDA sur APUS</td>
+					  <td class="help-table-command">sudo php /home/natacha/AMDA-NG/trunk/php/AmdaUpdate.php</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-2">Faire une mise à jour de l'arbre AMDA sur APUS en installant un nouveau jeu de données</td>
-					  <td class="help-table-command-2">sudo php /home/natacha/AMDA-NG/trunk/php/AmdaUpdate.php install</td>		
+					  <td class="help-table-entry">Faire une mise à jour de l'arbre AMDA sur APUS en installant un nouveau jeu de données</td>
+					  <td class="help-table-command">sudo php /home/natacha/AMDA-NG/trunk/php/AmdaUpdate.php install</td>		
 					</tr>
 				</table>
 
@@ -341,24 +321,24 @@
 			  	</table>
 			  	<table class="help-table">
 					<tr>
-					  <td class="help-table-entry-1">Adresse du fichier de log</td>
-					  <td class="help-table-command-1">@APUS : /home/natacha/AMDA-NG/trunk/data/biegun/RES/Plot1_/err</td>		
+					  <td class="help-table-entry">Adresse du fichier de log</td>
+					  <td class="help-table-command">@APUS : /home/natacha/AMDA-NG/trunk/data/biegun/RES/Plot1_/err</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-2">- 10</td>
-					  <td class="help-table-command-2">Problème avec les données --> Vérifier leur présence et start/stop time</td>		
+					  <td class="help-table-entry">- 10</td>
+					  <td class="help-table-command">Problème avec les données --> Vérifier leur présence et start/stop time</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-1">- 11</td>
-					  <td class="help-table-command-1">Problème avec le cache --> Vérifier que le nom du fichier cache précisé dans DDsys.xml soit le même que celui dans la base de donnée</td>		
+					  <td class="help-table-entry">- 11</td>
+					  <td class="help-table-command">Problème avec le cache --> Vérifier que le nom du fichier cache précisé dans DDsys.xml soit le même que celui dans la base de donnée</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-2">- 12</td>
-					  <td class="help-table-command-2">Problème de droits d'écriture --> Vérifier les droits sur les fichiers/dossiers de la base de donnée</td>		
+					  <td class="help-table-entry">- 12</td>
+					  <td class="help-table-command">Problème de droits d'écriture --> Vérifier les droits sur les fichiers/dossiers de la base de donnée</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-1">- 35</td>
-					  <td class="help-table-command-1">Problème de LOCK --> Supprimer le fichier LOCK dans le dossier correspondant aux données à tracer dans la base de donnée</td>		
+					  <td class="help-table-entry">- 35</td>
+					  <td class="help-table-command">Problème de LOCK --> Supprimer le fichier LOCK dans le dossier correspondant aux données à tracer dans la base de donnée</td>		
 					</tr>
 				</table>
 
