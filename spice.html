@@ -5,181 +5,7 @@
   	<head>
 	    <meta charset="UTF-8">
 	    <title>Memento SPICE</title>
-	    <style>
-
-	    	h1 { 
-
-				border-bottom: 1px solid #7a7a7a;
-
-				font-size: 1.5em;
-			}
-
-			h2 { font-size: 1.325em; }
-			h3{ font-size: 1.25em; }
-			h4{ font-size: 1.5em; } 
-			h5, h6{ font-size: 1em; }
-
-			ul { 
-		
-				margin-left: 20px; 
-				margin-bottom: 1.5em;
-
-				list-style: square inside;
-				
-				overflow: hidden;
-			}
-
-			ul ul, ul ol {
-				
-				margin-bottom: 0;
-
-				list-style: disc inside;
-			}
-
-			ol {
-				
-				margin-left: 20px;
-				margin-bottom: 1.5em;
-
-				list-style: decimal inside;
-				
-				overflow: hidden;
-			}
-
-			ol ol, ul ol {
-				
-				margin-bottom: 0;
-
-				list-style: lower-roman inside;
-			}
-
-			.main {
-
-				position: relative; /* NEW */
-
-				height: auto !important;
-				min-height: 100%;
-
-				clear: both;
-			}
-
-			.container {
-
-				position: relative;
-
-				padding-bottom: 6rem; /* NEW */
-				margin: 0 auto;
-				width: 60%;
-			}
-
-	    	.code {
-
-				display: inline-block;
-				border-width: 2px;
-				border-style: solid;
-				border-color: black;
-				background-color: black;
-				color: white;
-				width: 100%;
-			}
-
-	    	.help-table {
-
-	    		border-collapse: collapse;
-
-				margin-left: auto; 
-				margin-right: auto;
-			}
-
-			.help-table-head {
-
-				border: 4px solid black;
-
-				width: 1600px;
-				height: 2rem;
-
-				background-color: #292929;
-
-				color: #CCCCCC;
-				font-weight: bold;	
-				text-align: center;
-			}
-
-			.help-table-entry-1 {
-
-				border: 2px solid black;
-
-				width: 800px;
-				height: 2rem;
-				
-				background-color: #E9E9F1;
-
-				font-weight: bold;
-				text-align: center;
-			}
-
-			.help-table-command-1 {
-
-				border: 2px solid black;
-
-				width: 800px;
-				height: 2rem;
-
-				background-color: #E9E9F1;
-
-				font-style: italic;
-				text-align: center;
-			}
-
-			.help-table-entry-2 {
-
-				border: 2px solid black;
-
-				width: 800px;
-				height: 2rem;
-
-				font-weight: bold;
-				text-align: center;
-			}
-
-			.help-table-command-2 {
-
-				border: 2px solid black;
-
-				width: 800px;
-				height: 2rem;
-
-				font-style: italic;
-				text-align: center;
-			}
-
-			.tags
-			{
-				font-size: 1.4rem;
-				font-style: italic;
-				font-weight: bold;
-			}
-
-			a:link 
-			{ 
-				color: #000066; 
-				text-decoration: none;
-			}
-
-			a:visited 
-			{ 
-				color: #000066; 
-				text-decoration: none; 
-			}
-
-			a:hover 
-			{ 
-				color: #000066;
-				text-decoration: underline;
-				cursor: pointer;
-			}
-
-	    </style>
+	    <link rel="stylesheet" type="text/css" href="style.css">
   	</head>
 
   	<body>
@@ -202,20 +28,20 @@
 				</table>
 				<table class="help-table">
 					<tr>
-					  <td class="help-table-entry-1">SPK (Speed/Position Kernel)</td>
-					  <td class="help-table-command-1">Vitesse et position des objets célestes</td>		
+					  <td class="help-table-entry">SPK (Speed/Position Kernel)</td>
+					  <td class="help-table-command">Vitesse et position des objets célestes</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-2">PCK (Planetary Constant Kernel)</td>
-					  <td class="help-table-command-2">Taille, forme, orientation des palnètes du système solaire</td>		
+					  <td class="help-table-entry">PCK (Planetary Constant Kernel)</td>
+					  <td class="help-table-command">Taille, forme, orientation des palnètes du système solaire</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-1">CK (C-Matrix Kernel)</em></td>
-					  <td class="help-table-command-1">Orientation du vaisseau spatial</td>		
+					  <td class="help-table-entry">CK (C-Matrix Kernel)</em></td>
+					  <td class="help-table-command">Orientation du vaisseau spatial</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-2">FK (Frame Kernel)</td>
-					  <td class="help-table-command-2">Placement/changement de référentiel</td>		
+					  <td class="help-table-entry">FK (Frame Kernel)</td>
+					  <td class="help-table-command">Placement/changement de référentiel</td>		
 					</tr>
 				</table>
 
@@ -228,76 +54,76 @@
 				</table>
 				<table class="help-table">
 					<tr>
-					  <td class="help-table-entry-1">1</td>
-					  <td class="help-table-command-1">MERCURY BARYCENTER</td>		
+					  <td class="help-table-entry">1</td>
+					  <td class="help-table-command">MERCURY BARYCENTER</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-2">2</td>
-					  <td class="help-table-command-2">VENUS BARYCENTER</td>		
+					  <td class="help-table-entry">2</td>
+					  <td class="help-table-command">VENUS BARYCENTER</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-1">3</em></td>
-					  <td class="help-table-command-1">EARTH BARYCENTER</td>		
+					  <td class="help-table-entry">3</em></td>
+					  <td class="help-table-command">EARTH BARYCENTER</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-2">4</td>
-					  <td class="help-table-command-2">MARS BARYCENTER</td>		
+					  <td class="help-table-entry">4</td>
+					  <td class="help-table-command">MARS BARYCENTER</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-1">5</em></td>
-					  <td class="help-table-command-1">JUPITER BARYCENTER</td>		
+					  <td class="help-table-entry">5</em></td>
+					  <td class="help-table-command">JUPITER BARYCENTER</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-2">6</td>
-					  <td class="help-table-command-2">SATURN BARYCENTER</td>		
+					  <td class="help-table-entry">6</td>
+					  <td class="help-table-command">SATURN BARYCENTER</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-1">7</em></td>
-					  <td class="help-table-command-1">URANUS BARYCENTER</td>		
+					  <td class="help-table-entry">7</em></td>
+					  <td class="help-table-command">URANUS BARYCENTER</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-2">8</td>
-					  <td class="help-table-command-2">NEPTUNE BARYCENTER</td>		
+					  <td class="help-table-entry">8</td>
+					  <td class="help-table-command">NEPTUNE BARYCENTER</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-1">9</em></td>
-					  <td class="help-table-command-1">PLUTO BARYCENTER</td>		
+					  <td class="help-table-entry">9</em></td>
+					  <td class="help-table-command">PLUTO BARYCENTER</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-2">10</td>
-					  <td class="help-table-command-2">SUN</td>		
+					  <td class="help-table-entry">10</td>
+					  <td class="help-table-command">SUN</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-1">199</em></td>
-					  <td class="help-table-command-1">MERCURY</td>		
+					  <td class="help-table-entry">199</em></td>
+					  <td class="help-table-command">MERCURY</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-2">299</td>
-					  <td class="help-table-command-2">VENUS</td>		
+					  <td class="help-table-entry">299</td>
+					  <td class="help-table-command">VENUS</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-1">301</em></td>
-					  <td class="help-table-command-1">MOON</td>		
+					  <td class="help-table-entry">301</em></td>
+					  <td class="help-table-command">MOON</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-2">399</td>
-					  <td class="help-table-command-2">EARTH</td>		
+					  <td class="help-table-entry">399</td>
+					  <td class="help-table-command">EARTH</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-1">401</em></td>
-					  <td class="help-table-command-1">PHOBOS</td>		
+					  <td class="help-table-entry">401</em></td>
+					  <td class="help-table-command">PHOBOS</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-2">402</td>
-					  <td class="help-table-command-2">DEIMOS</td>		
+					  <td class="help-table-entry">402</td>
+					  <td class="help-table-command">DEIMOS</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-1">499</em></td>
-					  <td class="help-table-command-1">MARS</td>		
+					  <td class="help-table-entry">499</em></td>
+					  <td class="help-table-command">MARS</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-1">-202</em></td>
-					  <td class="help-table-command-1">MAVEN</td>		
+					  <td class="help-table-entry">-202</em></td>
+					  <td class="help-table-command">MAVEN</td>		
 					</tr>
 				</table>
 

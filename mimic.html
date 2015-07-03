@@ -5,181 +5,7 @@
   	<head>
 	    <meta charset="UTF-8">
 	    <title>Memento MIMIC</title>
-	    <style>
-
-	    	h1 { 
-
-				border-bottom: 1px solid #7a7a7a;
-
-				font-size: 1.5em;
-			}
-
-			h2 { font-size: 1.325em; }
-			h3{ font-size: 1.25em; }
-			h4{ font-size: 1.5em; } 
-			h5, h6{ font-size: 1em; }
-
-			ul { 
-		
-				margin-left: 20px; 
-				margin-bottom: 1.5em;
-
-				list-style: square inside;
-				
-				overflow: hidden;
-			}
-
-			ul ul, ul ol {
-				
-				margin-bottom: 0;
-
-				list-style: disc inside;
-			}
-
-			ol {
-				
-				margin-left: 20px;
-				margin-bottom: 1.5em;
-
-				list-style: decimal inside;
-				
-				overflow: hidden;
-			}
-
-			ol ol, ul ol {
-				
-				margin-bottom: 0;
-
-				list-style: lower-roman inside;
-			}
-
-			.main {
-
-				position: relative; /* NEW */
-
-				height: auto !important;
-				min-height: 100%;
-
-				clear: both;
-			}
-
-			.container {
-
-				position: relative;
-
-				padding-bottom: 6rem; /* NEW */
-				margin: 0 auto;
-				width: 60%;
-			}
-
-	    	.code {
-
-				display: inline-block;
-				border-width: 2px;
-				border-style: solid;
-				border-color: black;
-				background-color: black;
-				color: white;
-				width: 100%;
-			}
-
-	    	.help-table {
-
-	    		border-collapse: collapse;
-
-				margin-left: auto; 
-				margin-right: auto;
-			}
-
-			.help-table-head {
-
-				border: 4px solid black;
-
-				width: 1600px;
-				height: 2rem;
-
-				background-color: #292929;
-
-				color: #CCCCCC;
-				font-weight: bold;	
-				text-align: center;
-			}
-
-			.help-table-entry-1 {
-
-				border: 2px solid black;
-
-				width: 800px;
-				height: 2rem;
-				
-				background-color: #E9E9F1;
-
-				font-weight: bold;
-				text-align: center;
-			}
-
-			.help-table-command-1 {
-
-				border: 2px solid black;
-
-				width: 800px;
-				height: 2rem;
-
-				background-color: #E9E9F1;
-
-				font-style: italic;
-				text-align: center;
-			}
-
-			.help-table-entry-2 {
-
-				border: 2px solid black;
-
-				width: 800px;
-				height: 2rem;
-
-				font-weight: bold;
-				text-align: center;
-			}
-
-			.help-table-command-2 {
-
-				border: 2px solid black;
-
-				width: 800px;
-				height: 2rem;
-
-				font-style: italic;
-				text-align: center;
-			}
-
-			.tags
-			{
-				font-size: 1.4rem;
-				font-style: italic;
-				font-weight: bold;
-			}
-
-			a:link 
-			{ 
-				color: #000066; 
-				text-decoration: none;
-			}
-
-			a:visited 
-			{ 
-				color: #000066; 
-				text-decoration: none; 
-			}
-
-			a:hover 
-			{ 
-				color: #000066;
-				text-decoration: underline;
-				cursor: pointer;
-			}
-
-	    </style>
+	    <link rel="stylesheet" type="text/css" href="style.css">
   	</head>
 
   	<body>
@@ -203,20 +29,20 @@
 				</table>
 				<table class="help-table">
 					<tr>
-					  <td class="help-table-entry-1">Chemin vers les datasets du PDS</td>
-					  <td class="help-table-command-1">http://ppi.pds.nasa.gov/data/</td>		
+					  <td class="help-table-entry">Chemin vers les datasets du PDS</td>
+					  <td class="help-table-command">http://ppi.pds.nasa.gov/data/</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-2">Faire une copie locale d'un dataset du PDS</td>
-					  <td class="help-table-command-2">mimic-clone -p -v -t pds-ppi -u none -i "chemin_dataset"</td>		
+					  <td class="help-table-entry">Faire une copie locale d'un dataset du PDS</td>
+					  <td class="help-table-command">mimic-clone -p -v -t pds-ppi -u none -i "chemin_dataset"</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-1">Mettre à jour la copie locale versionné</td>
-					  <td class="help-table-command-1">mimic-refresh -v -r</td>		
+					  <td class="help-table-entry">Mettre à jour la copie locale versionné</td>
+					  <td class="help-table-command">mimic-refresh -v -r</td>		
 					</tr>
 					<tr>
-					  <td class="help-table-entry-2">Synchroniser la copie locale avec la base PDS</em></td>
-					  <td class="help-table-command-2">mimic-pull -v</td>		
+					  <td class="help-table-entry">Synchroniser la copie locale avec la base PDS</em></td>
+					  <td class="help-table-command">mimic-pull -v</td>		
 					</tr>
 				</table>
 
