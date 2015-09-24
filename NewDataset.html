@@ -4,144 +4,277 @@
 
   	<head>
 	    <meta charset="UTF-8">
-	    <title>New dataset</title>
-	    <link rel="stylesheet" type="text/css" href="style.css">
+	    <title>New data</title>
+      	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+      	<style type="text/css">
+			body {
+    			display: flex;
+    			min-height: 100vh;
+    			flex-direction: column;
+  			}
+
+			.main { flex: 1 0 auto; }
+      	</style>
   	</head>
 
   	<body>
-  		<div class="main">
-			<div class="container">
 
-				<h1>1 - Mise à jour de la base de données</h1>
+  		<nav class="grey">
+		    <div class="nav-wrapper">
+		    	<a href="#" class="brand-logo center">New data</a>
+		    </div>
+	  	</nav>
 
-				<h2>1.1. Création d'un nouveau dossier</h2>
+	  	<br/> <br/>
+		
+  		
+		<div class="center-align">
+			<a class="grey darken-1 waves-effect waves-light btn" href="#bdd">Base de données</a>
+			<a class="grey darken-1 waves-effect waves-light btn" href="#amda">Interface AMDA</a>
+  		</div>
 
-				<p>Tout d'abord, il faut créer un nouveau dossier qui contiendra les nouvelles données à rajouter dans la base de données.</p>
+  		<br/><br/>
+		
+		<div class="container main">
 
-				<p class="code">mkdir <em>new_dataset</em></p>
+			<div class="row">
 
-				<p>Se placer dans ce nouveau dossier :</p>
+				<div class="col s12 m12 l10 offset-l1">
 
-				<p class="code">cd <em>new_dataset</em></p>
+					<h4 class="center-align" id="bdd">1 - Mise à jour de la base de données</h4>
 
-				<h2>1.2. Insérer les données dans la base de données</h2>
+					<br/>
 
-				<p>Une fois que l'emplacement est créé, il faut rajouter les données à l'intérieur. Pour celà, on peut utiliser <em>rsync</em>, <em>scp</em>, etc ... </p>
+					<h5>1.1. Création d'un nouveau dossier</h5>
 
-				<h2>1.3. Création du fichier <em>key_times.nc</em></h2>
+					<p>Tout d'abord, il faut créer un nouveau dossier qui contiendra les nouvelles données à rajouter dans la base de données.</p>
 
-				<p>Ensuite, il faut créer le fichier qui rescence tous les fichiers pésents dans ce dataset.</p>
+					<div class="card grey lighten-2">
+	        			<div class="card-content red-text text-darken-4">
+	          				<p>mkdir <em>new_dataset</em></p>
+	        			</div>
+         			</div>
 
-				<p class="code">TimesUpdate -r <em>key_times.nc</em> <em>key_[0-9]*.nc</em></p>
+					<p>Se placer dans ce nouveau dossier :</p>
+			
+					<div class="card grey lighten-2">
+	        			<div class="card-content red-text text-darken-4">
+	          				<p>cd <em>new_dataset</em></p>
+	        			</div>
+         			</div>
 
-				Le nouveau fichier <em>key_times.nc</em> est alors créé et les fichiers sont également compressés.
+					<h5>1.2. Insérer les données dans la base de données</h5>
 
-				<h2>1.4. Création des fichiers <em>key_info.xml</em> et <em>key_info.nc</em></h2>
+					<p>Une fois que l'emplacement est créé, il faut rajouter les données à l'intérieur. Pour celà, on peut utiliser <em>rsync</em>, <em>scp</em>, etc ... </p>
 
-				<p>Il faut également créer le fichier qui stockera les informations relatives au dataset : <em>key_info.xml</em>.</p>
+					<h5>1.3. Création du fichier <em>key_times.nc</em></h5>
 
-				<p>Ci-dessous, un exemple de fichier de cette sorte. Il faut absolument compléter les balises <em>Mission</em>, <em>Instrument</em> et <em>MinSampling</em> (le reste se met à jour automatiquement à l'aide du ficher <em>key_times.nc</em>).</p>
+					<p>Ensuite, il faut créer le fichier qui rescence tous les fichiers pésents dans ce dataset.</p>
 
-				<img src="key_info_xml.png" alt="fichier info XML">
+					<div class="card grey lighten-2">
+	        			<div class="card-content red-text text-darken-4">
+	          				<p>TimesUpdate -r <em>key_times.nc</em> <em>key_[0-9]*.nc</em></p>
+	        			</div>
+         			</div>
 
-				<p>Une fois que ce fichier <em>XML</em> est créé, nous créons sa version au format <em>netCDF</em> en tapant la commande :</p>
+					Le nouveau fichier <em>key_times.nc</em> est alors créé et les fichiers sont également compressés.
 
-				<p class="code">infoLocal2nc <em>key_info.xml</em> <em>key_info.nc</em></p>
+					<h5>1.4. Création des fichiers <em>key_info.xml</em> et <em>key_info.nc</em></h5>
 
-				<h2>1.5. Création du fichier <em>key_cache.nc</em></h2>
+					<p>Il faut également créer le fichier qui stockera les informations relatives au dataset : <em>key_info.xml</em>.</p>
 
-				<p>Pour finir, il faut créer le fichier <em>key_cache.nc</em> qui renseigne sur l'utilisation (lecture) des fichiers de la base de données.</p>
+					<p>Ci-dessous, un exemple de fichier de cette sorte. Il faut absolument compléter les balises <em>Mission</em>, <em>Instrument</em> et <em>MinSampling</em> (le reste se met à jour automatiquement à l'aide du ficher <em>key_times.nc</em>).</p>
+					
+					<br/>
 
-				<p>Pour ce faire, il faut copier le fichier <em>clean</em> et le modifier en y écivant les lignes :</p>
+					<div class="center-align">
+						<img src="key_info_xml.png" alt="fichier info XML">
+					</div>
+					
+					<br/>
 
-				<p class="code">rm <em>key_[0-9]*.nc</em></p>
+					<p>Une fois que ce fichier <em>XML</em> est créé, nous créons sa version au format <em>netCDF</em> en tapant la commande :</p>
 
-				<p>et</p>
+					<div class="card grey lighten-2">
+	        			<div class="card-content red-text text-darken-4">
+	          				<p>infoLocal2nc <em>key_info.xml</em> <em>key_info.nc</em></em></p>
+	        			</div>
+         			</div>
 
-				<p class="code">cp -a <em>$DDLIB/Cash.template</em> <em>./key_cache.nc</em></p>
+					<h5>1.5. Création du fichier <em>key_cache.nc</em></h5>
 
-				<p>Enfin , le lancer avec la commande :</p>
+					<p>Pour finir, il faut créer le fichier <em>key_cache.nc</em> qui renseigne sur l'utilisation (lecture) des fichiers de la base de données.</p>
 
-				<p class="code"><em>clean</em></p>
+					<p>Pour ce faire, il faut copier le fichier <em>clean</em> et le modifier en y écivant les lignes :</p>
+					
+					<div class="card grey lighten-2">
+	        			<div class="card-content red-text text-darken-4">
+	          				<p>rm <em>key_[0-9]*.nc</em></p>
+	        			</div>
+         			</div>
 
-				<p>Un exemple de dataset contenant un seul fichier de données ainsi que les fichiers correspondants est donné ci-dessous :</p>
+					<p>et</p>
+					
+					<div class="card grey lighten-2">
+	        			<div class="card-content red-text text-darken-4">
+	          				<p>cp -a <em>$DDLIB/Cash.template</em> <em>./key_cache.nc</em></p>
+	        			</div>
+         			</div>
 
-				<img src="dataset.png" alt="exemple de dataset">
+					<p>Enfin , le lancer avec la commande :</p>
 
-				<h2>1.6. Modification des fichiers <em>DDsys.xml</em> et <em>refer.nc</em></h2>
+					<div class="card grey lighten-2">
+	        			<div class="card-content red-text text-darken-4">
+	          				<p><em>clean</em></p>
+	        			</div>
+         			</div>
 
-				<p>Pour finir, il faut ajouter ce dataset dans le fichier <em>DDsys.xml</em> en rajoutant un nouveau <em>Virtual instrument</em> (<em>VI</em>).</p>
+					<p>Un exemple de dataset contenant un seul fichier de données ainsi que les fichiers correspondants est donné ci-dessous :</p>
 
-				<p>Il faut donc préciser le chemin vers le dossier dans lequel seront stockées les données ainsi que les noms des fichiers d'informations correspondants : <em>key_times.nc</em>, <em>key_info.nc</em> et <em>key_cache.nc</em>.</p>
+					<br/>
 
-				<p>Egalement, donner un <em>id</em> au <em>VI</em> nouvellementy créé. Celui-ci est très important et nous servira par la suite pour manipuler les données correspondantes au <em>VI</em> nouvellement créé.
+					<div class="center-align">
+						<img class="responsive-img" src="dataset.png" alt="exemple de dataset">
+					</div>
+					
+					<br/>
 
-				<p class="warning">L'<em>id</em> correspondant au <em>VI</em> doit absolument être unique sinon cela ne fonctionnera pas!</p>
+					<h5>1.6. Modification des fichiers <em>DDsys.xml</em> et <em>refer.nc</em></h5>
 
-				<p>Ci-dessous, un exemple de <em>VI</em> :</p>
+					<p>Pour finir, il faut ajouter ce dataset dans le fichier <em>DDsys.xml</em> en rajoutant un nouveau <em>Virtual instrument</em> (<em>VI</em>).</p>
 
-				<img src="DDsys_xml.png" alt="DDsys.xml">
+					<p>Il faut donc préciser le chemin vers le dossier dans lequel seront stockées les données ainsi que les noms des fichiers d'informations correspondants : <em>key_times.nc</em>, <em>key_info.nc</em> et <em>key_cache.nc</em>.</p>
 
-				<p>Il reste alors à modifier la version <em>netCDF</em> de ce fichier, à savoir <em>refer.nc</em>n en tapant la commande suivante :</p>
+					<p>Egalement, donner un <em>id</em> au <em>VI</em> nouvellementy créé. Celui-ci est très important et nous servira par la suite pour manipuler les données correspondantes au <em>VI</em> nouvellement créé.
 
-				<p class="code"><em>makeDDsys</em></p>
+					<div class="card red lighten-1">
+	        			<div class="card-content white-text">
+	          				<p>L'<em>id</em> correspondant au <em>VI</em> doit absolument être unique sinon cela ne fonctionnera pas!</p>
+	        			</div>
+         			</div>
 
-				<h1>2 - Mise à jour des fichiers de manipulation des données</h1>
+					<p>Ci-dessous, un exemple de <em>VI</em> :</p>
 
-				<h2>2.1. Modification du fichier <em>DD_mission.xml</em></h2>
+					<br/>
 
-				<p>Le fichier <em>DD_mission.xml</em> s'occupe de l'aspect graphique de l'interface <em>AMDA</em>; de la manière dont sont affichées les informations.</p>
+					<div class="center-align">
+						<img class="responsive-img" src="DDsys_xml.png" alt="DDsys.xml">
+					</div>
+					
+					<br/>
 
-				<p>Chaque dataset fait partie d'une <em>mission</em> et découle d'un <em>instrument</em>.</p>
+					<p>Il reste alors à modifier la version <em>netCDF</em> de ce fichier, à savoir <em>refer.nc</em>n en tapant la commande suivante :</p>
 
-				<p>Le nouveau dataset (ou jeu de données) est ainsi ajouté à l'intérieur d'une balise <em>instrument</em>, elle-même se situant à l'intérieur d'une balise <em>mission</em>.</p>
+					<div class="card grey lighten-2">
+	        			<div class="card-content red-text text-darken-4">
+	          				<p><em>makeDDsys</em></p>
+	        			</div>
+         			</div>
 
-				<p>Ce nouveau dataset possède :
-				<ul>
-					<li>Un nom précisé par l'attribut <em>name</em></li>
-					<li>Un <em>id</em> précisé par l'attribut <em>xml:id</em></li>
-				</ul> 
-				</p>
+					<br/><br/>
 
-				<p class="info">L'<em>id</em> du dataset doit correspondre à celui qui est dans le fichier <em>DDsys.xml</em>, à ceci près que les <em>underscore</em> sont ici remplacés par des ":". Il est également équivalent à l'attribut <em>vi</em> du fichier <em>mission.xml</em>.</p>
+					<h4 class="center-align" id="amda">2 - Mise à jour des fichiers de manipulation des données</h4>
 
-				<p>Ce dataset doit contenir une balise <em>parameter</em> pour chaque paramètre que l'on désire pouvoir manipuler par la suite dans <em>AMDA</em>.</p>
+					<br/>
 
-				<p>De même, chaque paramètre doit être affublé des attributs suivants :
-				<ul>
-					<li>Un nom : attribut <em>name</em></li>
-					<li>Un <em>id</em> : attribut <em>xml:id</em></li>
-				</ul>
-				</p>
-	
-				<p class="info">L'<em>id</em> du paramètre doit correspondre à celui qui est dans le fichier <em>mission.xml</em> pour ce même paramètre.</p>
+					<h5>2.1. Modification du fichier <em>DD_mission.xml</em></h5>
 
-				<p>Si le paramètre possède plusieurs dimensions, la balise <em>parameter</em> doit contenir une balise <em>component</em> pour chaque dimension que l'on veut pouvoir manipuler.</p>
+					<p>Le fichier <em>DD_mission.xml</em> s'occupe de l'aspect graphique de l'interface <em>AMDA</em>; de la manière dont sont affichées les informations.</p>
 
-				<p>Ci-dessous, un exemple de dataset :</p>
+					<p>Chaque dataset fait partie d'une <em>mission</em> et découle d'un <em>instrument</em>.</p>
 
-				<img src="DD_mission_XML.png" alt="DD_mission_XML">
+					<p>Le nouveau dataset (ou jeu de données) est ainsi ajouté à l'intérieur d'une balise <em>instrument</em>, elle-même se situant à l'intérieur d'une balise <em>mission</em>.</p>
 
-				<h2>2.2. Modification du fichier <em>mission.xml</em></h2>
+					<p>Ce nouveau dataset possède :
+					<ul>
+						<li>Un nom précisé par l'attribut <em>name</em></li>
+						<li>Un <em>id</em> précisé par l'attribut <em>xml:id</em></li>
+					</ul> 
+					</p>
 
-				<p>Le fichier <em>mission.xml</em> contient la description des paramètres et fait le lien avec le fichier contenant les données.</p>
+					<div class="card green lighten-4">
+	        			<div class="card-content grey-text text-darken-3">
+	          				<p>L'<em>id</em> du dataset doit correspondre à celui qui est dans le fichier <em>DDsys.xml</em>, à ceci près que les <em>underscore</em> sont ici remplacés par des ":". Il est également équivalent à l'attribut <em>vi</em> du fichier <em>mission.xml</em>.</p>
+	        			</div>
+         			</div>
+					
+					<p>Ce dataset doit contenir une balise <em>parameter</em> pour chaque paramètre que l'on désire pouvoir manipuler par la suite dans <em>AMDA</em>.</p>
 
-				<p>Il faut ajouter une nouvelle balise <em>PARAM</em> pour chaque nouveau paramètre que l'on désire manipuler.</p>
+					<p>De même, chaque paramètre doit être affublé des attributs suivants :
+					<ul>
+						<li>Un nom : attribut <em>name</em></li>
+						<li>Un <em>id</em> : attribut <em>xml:id</em></li>
+					</ul>
+					</p>
 
-				<p>Cette balise posède les attributs suivants :
-				<ul>
-					<li><em>vi</em> : Le nom du <em>vi</em>; la même valeur que l'attribut <em>xml:id</em> de <em>DD_mission.xml</em> et que dans le fichier <em>DDsys.xml</em> (les ":" deviennent des <em>underscores</em> dans celui-ci.)</li>
-					<li><em>xml:id</em> : <em>id</em> du paramètre; la même valeur que celle de l'attibut <em>xml:id</em> de la balise <em>parameter</em> du fichier <em>DD_mission.xml</em>.</li>
-					<li><em>name</em> : nom du paramètre; même valeur que le nom du paramètre correspondant dans le fichier <em>netCDF</em> contenant les dobnnées.</li>
-				</ul>
-				</p>
+					<div class="card green lighten-4">
+	        			<div class="card-content grey-text text-darken-3">
+	          				<p>L'<em>id</em> du paramètre doit correspondre à celui qui est dans le fichier <em>mission.xml</em> pour ce même paramètre.</p>
+	        			</div>
+         			</div>
 
-				<p>Ci-dessous, un exemple de fichier <em>mission.xml</em> :</p>
+					<p>Si le paramètre possède plusieurs dimensions, la balise <em>parameter</em> doit contenir une balise <em>component</em> pour chaque dimension que l'on veut pouvoir manipuler.</p>
 
-				<img src="mission_XML.png" alt="mission_XML.png">
+					<p>Ci-dessous, un exemple de dataset :</p>
 
-  			</div>
-		</div>	
+					<br/>
+
+					<div class="center-align">
+						<img class="responsive-img" src="DD_mission_XML.png" alt="DD_mission_XML">
+					</div>
+					
+					<br/>
+
+					<h5>2.2. Modification du fichier <em>mission.xml</em></h5>
+
+					<p>Le fichier <em>mission.xml</em> contient la description des paramètres et fait le lien avec le fichier contenant les données.</p>
+
+					<p>Il faut ajouter une nouvelle balise <em>PARAM</em> pour chaque nouveau paramètre que l'on désire manipuler.</p>
+
+					<p>Cette balise posède les attributs suivants :
+					<ul>
+						<li><em>vi</em> : Le nom du <em>vi</em>; la même valeur que l'attribut <em>xml:id</em> de <em>DD_mission.xml</em> et que dans le fichier <em>DDsys.xml</em> (les ":" deviennent des <em>underscores</em> dans celui-ci.)</li>
+						<li><em>xml:id</em> : <em>id</em> du paramètre; la même valeur que celle de l'attibut <em>xml:id</em> de la balise <em>parameter</em> du fichier <em>DD_mission.xml</em>.</li>
+						<li><em>name</em> : nom du paramètre; même valeur que le nom du paramètre correspondant dans le fichier <em>netCDF</em> contenant les données.</li>
+					</ul>
+					</p>
+
+					<p>Ci-dessous, un exemple de fichier <em>mission.xml</em> :</p>
+
+					<br/>
+
+					<div class="center-align">
+						<img class="responsive-img" src="mission_XML.png" alt="mission_XML.png">
+					</div>
+					
+					<br/>
+
+					<h5>2.3. Ajout de la nouvelle mission dans<em>Missions.xml</em></h5>
+
+					<p>Pour finir, il reste à ajouter la mission dans le fichier <em>Missions.xml</em> qui regroupe toutes les missions décrites au travers des fichiers <em>DD_mission.xml</em> et <em>mission.xml</em>.</p>
+
+					<br/>
+
+					<div class="center-align">
+						<img class="responsive-img" src="mission.png" alt="mission.png">
+					</div>
+					
+					<br/>
+
+				</div> <!-- End of col -->
+
+			</div> <!-- End of row --> 
+
+		</div> <!-- End of container -->
+
+		<footer class="page-footer grey">
+			<p class="center-align white-text">Arnaud BIEGUN © 2015 Copyright Text</p>
+		</footer>
+
+      	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+
   	</body>
 
 </html>
